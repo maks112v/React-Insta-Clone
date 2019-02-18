@@ -1,0 +1,32 @@
+header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: #212121;
+  font-size: 20px;
+}
+
+input {
+  border-radius: 5px;
+  border: 1px solid #E0E0E0;
+  font-size: 15px;
+}
+
+.header {
+  border-bottom: 1px solid #CFD8DC;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  
+}
+
+.icon {
+  margin-right: 10px;
+}
