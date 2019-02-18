@@ -1,21 +1,31 @@
 import React from 'react';
 import './PostContainer.css';
-import PropType from 'prop-types';
+import PropTypes from 'prop-types';
+import CommentsSection from './CommentSection/CommentSection';
 
 const PostContainer = props => {
   return(
     <div className="card">
-      <div className="header" ><img src="" alt=""/><h3></h3></div>
-      <div className="image" ><img src="" alt=""/></div>
-      <div className="actions"></div>
-      <div className="content"></div>
-      {/* <CommentsSection /> */}
+      <div className="card-header" ><img src={props.postInfo.thumbnailUrl}  className="user-img" alt=""/><h3>{ props.postInfo.username }</h3></div>
+      <div className="image" ><img src={props.postInfo.imageUrl} className="body-img" alt=""/></div>
+      <div className="actions cp-10"><i className="far fa-heart fa-lg"></i><i className="far fa-comment-alt fa-lg cp-10"></i> <p>{props.postInfo.likes} likes</p></div>
+      <div className="comments">
+        {props.postInfo.comments.map((content, index) => (
+          <CommentsSection comment={content} key={index} />
+        ))}
+      </div>
+      <input className="comment-input" type="text" placeholder="Add a comment..." />
     </div>
   );
 }
 
-PostContainer.propType = {
-
-}
+PostContainer.propTypes = {
+  postInfo: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    thumbnailUrl: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    likes: PropTypes.number,
+  })
+};
 
 export default PostContainer;

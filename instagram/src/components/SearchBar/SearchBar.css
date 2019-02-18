@@ -15,12 +15,20 @@ a {
 
 input {
   border-radius: 5px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #EDF2F9;
+  height: 30px;
   font-size: 15px;
+  text-align: center;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+  border-color: #2C7BE5;
 }
 
 .header {
-  border-bottom: 1px solid #CFD8DC;
+  background-color: white;
+  border-bottom: 1px solid #EDF2F9;
   position: fixed;
   width: 100%;
   top: 0;
