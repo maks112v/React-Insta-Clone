@@ -2,6 +2,7 @@ import React from 'react';
 import './PostContainer.css';
 import PropTypes from 'prop-types';
 import CommentsSection from './CommentSection/CommentSection';
+import Moment from 'react-moment';
 
 const PostContainer = props => {
   return(
@@ -14,6 +15,7 @@ const PostContainer = props => {
           <CommentsSection comment={content} key={index} />
         ))}
       </div>
+      <div className="cp-10"><Moment fromNow >{ props.postInfo.timestamp }</Moment></div>
       <input className="comment-input" type="text" placeholder="Add a comment..." />
     </div>
   );
@@ -25,6 +27,7 @@ PostContainer.propTypes = {
     thumbnailUrl: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
     likes: PropTypes.number,
+    timestamp: PropTypes.string,
   })
 };
 
