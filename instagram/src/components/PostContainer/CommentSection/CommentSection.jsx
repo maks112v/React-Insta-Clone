@@ -15,7 +15,7 @@ class CommentSection extends Component {
     e.preventDefault();
     const newComment = {
       text: this.state.commentText,
-      username: "Why",
+      username: localStorage.getItem('username'),
     }
     this.props.helperFunction(this.state.index,[...this.state.comments,newComment]);
     this.setState({
@@ -24,8 +24,19 @@ class CommentSection extends Component {
     })
   }
 
-  deleteHandler = () => {
-    
+  deleteHandler = (index) => {
+    if(this.state.comments[index].username === localStorage.getItem('username')){
+      const newComments = [...this.state.comments];
+      newComments.splice(index, 1);
+      this.props.helperFunction(this.state.index,newComments);
+      this.setState({
+        comments: newComments,
+        commentText: '',
+      })
+    }
+    else {
+      console.error('Not Your Post');
+    }
   }
 
   handleChanges = e => {
