@@ -22,6 +22,23 @@
   position: relative;
   width: 100%;
 }
+.comment-submit {
+  position: relative;
+  width: 20%;
+}
+
+.post-liked{
+  color: red;
+}
+
+.fa-heart{
+  cursor: pointer;
+  transition: .2s;
+}
+
+.comment-add {
+  display:flex;
+}
 
 .card-header h3 {
   padding-left: 20px;

@@ -1,17 +1,49 @@
-import React from 'react'
-import PropType from 'prop-types';
+import React, { Component } from 'react';
+import Comment from './Comment/Comment';
 
-const CommentSection = props => {
-  return(
-    <div><b>{ props.comment.username }</b> { props.comment.text }</div>
-  );
-}
+class CommentSection extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      comments : props.comments,
+      index: props.index,
+      commentText: '',
+    }
+  }
 
-CommentSection.propType = {
-  comment: PropType.shape({
-    text: PropType.string.isRequired,
-    username: PropType.string
-  })
+  addNewComment = e =>{
+    e.preventDefault();
+    const newComment = {
+      text: this.state.commentText,
+      username: "Why",
+    }
+    this.props.helperFunction(this.state.index,[...this.state.comments,newComment]);
+    this.setState({
+      comments: [...this.state.comments,newComment],
+      commentText: '',
+    })
+  }
+
+  handleChanges = e => {
+    this.setState({ commentText: e.target.value });
+  };
+
+  render() {
+    return(
+      <>
+      <div className="comments">
+        {this.state.comments.map((content, index) => (
+          <Comment comment={content} key={index} />
+        ))} 
+        
+      </div>
+      <form onSubmit={this.addNewComment} className="comment-add">
+        <input className="comment-input" value={this.state.commentText} onChange={this.handleChanges} type="text" placeholder="Add a comment..." />
+        {/* <button className="comment-submit">Comment</button> */}
+      </form>
+      </>
+    );
+  }
 }
 
 export default CommentSection;
