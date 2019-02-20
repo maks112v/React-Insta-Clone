@@ -31,6 +31,15 @@
   color: red;
 }
 
+.hover-delete{
+  cursor: pointer;
+}
+
+.hover-delete:hover{
+  cursor: pointer;
+  color: red;
+}
+
 .fa-heart{
   cursor: pointer;
   transition: .2s;

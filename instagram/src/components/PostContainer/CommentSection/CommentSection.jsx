@@ -24,6 +24,10 @@ class CommentSection extends Component {
     })
   }
 
+  deleteHandler = () => {
+    
+  }
+
   handleChanges = e => {
     this.setState({ commentText: e.target.value });
   };
@@ -33,7 +37,7 @@ class CommentSection extends Component {
       <>
       <div className="comments">
         {this.state.comments.map((content, index) => (
-          <Comment comment={content} key={index} />
+          <Comment comment={content} key={index} index={index} deleteHandler={this.deleteHandler} />
         ))} 
         
       </div>

@@ -25,23 +25,6 @@ class App extends Component {
     }
   }
 
-  // componentDidUpdate(){
-  //   if(localStorage.getItem('posts') !== null ){
-  //     this.setState({
-  //       posts: JSON.parse(localStorage.getItem('posts')),
-  //     })
-  //   }
-  //   else{
-  //     this.setState({
-  //       posts: data,
-  //     })
-  //   }
-  // }
-
-  searchHandler = () =>{
-
-  }
-
   likePost = index => {
     const newPosts = [...this.state.posts];
     if(newPosts[index].liked){

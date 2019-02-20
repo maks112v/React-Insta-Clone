@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Comment = (props) => {
   return(
-    <div><b>{ props.comment.username }</b> { props.comment.text }</div>
+    <div onClick={() => props.deleteHandler(props.index)} className="hover-delete"><b>{ props.comment.username }</b> { props.comment.text }</div>
   );
 }
 
