@@ -1,5 +1,25 @@
 import React, { Component } from 'react';
 import Comment from './Comment/Comment';
+import styled from 'styled-components';
+
+const Comments = styled.div`
+  padding: 0 10px 10px 10px;
+`;
+
+const NewComment = styled.input`
+  border-radius: 5px;
+  border: 1px solid #EDF2F9;
+  height: 30px;
+  font-size: 15px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+
+  &:focus{
+    outline: none;
+    border-color: #2C7BE5;
+  }
+`;
 
 class CommentSection extends Component {
   constructor(props){
@@ -46,14 +66,14 @@ class CommentSection extends Component {
   render() {
     return(
       <>
-      <div className="comments">
+      <Comments>
         {this.state.comments.map((content, index) => (
           <Comment comment={content} key={index} index={index} deleteHandler={this.deleteHandler} />
         ))} 
         
-      </div>
+      </Comments>
       <form onSubmit={this.addNewComment} className="comment-add">
-        <input className="comment-input" required="required" value={this.state.commentText} onChange={this.handleChanges} type="text" placeholder="Add a comment..." />
+        <NewComment className="comment-input" required="required" value={this.state.commentText} onChange={this.handleChanges} type="text" placeholder="Add a comment..." />
         {/* <button className="comment-submit">Comment</button> */}
       </form>
       </>

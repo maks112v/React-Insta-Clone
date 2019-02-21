@@ -3,6 +3,21 @@ import './Posts.css';
 import SearchBar from './SearchBar/SearchBar';
 import data from './dummy-data';
 import Card from './PostContainer/PostContainer';
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  padding-top: 50px;
+`;
+
+const ContentBody = styled.div`
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  align-items: flex-start;
+`;
+
+const NotFound = styled.h2`
+`;
 
 class PostsPage extends Component{
   state = {
@@ -48,7 +63,7 @@ class PostsPage extends Component{
 
   handleChanges = e => {
     const displayPosts = [...this.state.posts].filter( current => current.username.toLowerCase().includes(e.target.value.toLowerCase()));
-    const displaySearch = (e.target.value == null) ? false : true;
+    const displaySearch = (e.target.value == "") ? false : true;
     this.setState({
       search: e.target.value,
       displayPosts,
@@ -67,14 +82,19 @@ class PostsPage extends Component{
 
   render() {
     return (
-      <div className="padding-body">
+      <Wrapper>
         <SearchBar searchHandler={this.handleChanges} searchValue={this.state.search} logOutHandler={this.logOut} />
-        <div className="content-body">
-        {((this.state.displaySearch) ? this.state.displayPosts: this.state.posts).map((content, index) => (
-          <Card key={index} index={index} postInfo={content} likePost={() => this.likePost(index)} helperFunction={this.helperFunction} />
-        ))}
-        </div>
-      </div>
+        <ContentBody>
+        {
+          (this.state.displaySearch && this.state.displayPosts.length === 0 ) ?
+           <NotFound>No Posts Found</NotFound>
+          :
+          ((this.state.displaySearch) ? this.state.displayPosts: this.state.posts).map((content, index) => (
+            <Card key={index} index={index} postInfo={content} likePost={() => this.likePost(index)} helperFunction={this.helperFunction} />
+          ))
+        }
+        </ContentBody>
+      </Wrapper>
     );
   }
 }
