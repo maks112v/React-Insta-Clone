@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import './Login.css';
 
 class LoginPage extends Component {
-  state = {
-    username: '',
-    password: '',
-    logged: false,
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      logged: false,
+    };
+  }
+  
 
   changeHandler = e => this.setState({[e.target.name]: e.target.value,})
 
@@ -19,33 +23,21 @@ class LoginPage extends Component {
       password:'',
       logged: true,
     })
+    this.props.reloadHandler();
   }
 
 
   render() {
-    const LoginForm = () => {
-      return(
-        <form onSubmit={this.loginHandler} classname="login-form">
-          <input type="text" className='mb-10' placeholder="Username" autoFocus value={this.state.username} onChange={this.changeHandler} name="username" /><br/>
-          <input type="Password"  className='mb-10' placeholder="Password" value={this.state.password} onChange={this.changeHandler} name="password" /><br/>
-          <button className="login-button" type="submit">Login</button>
-        </form>
-      );
-    }
-
-    const Logged = () => {
-      return(
-        <div>
-          <h3>Welcome {localStorage.getItem('username')}</h3>
-        </div>
-      );
-    }
 
     return(
       <div className="container-full-width">
         <div className="login-section">
           <h1>Login</h1>
-          {(this.state.logged) ?  <Logged /> : <LoginForm /> }
+          <form onSubmit={this.loginHandler} className="login-form">
+            <input type="text" className='mb-10' placeholder="Username" required="required"  value={this.state.username} onChange={this.changeHandler} name="username" /><br/>
+            <input type="Password"  className='mb-10' placeholder="Password" required="required"  value={this.state.password} onChange={this.changeHandler} name="password" /><br/>
+            <button className="login-button" type="submit">Login</button>
+          </form>
         </div>
         <div className="side-image">
         </div>

@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import withConditionalRender from './components/withConditionalRender';
+import authenticate from './components/authenticate';
 import PostsPage from './components/PostsPage';
 import LoginPage from './components/LoginPage';
 import './App.css';
 
-const ToShow = withConditionalRender(PostsPage)(LoginPage);
+const ToShow = authenticate(PostsPage)(LoginPage);
 
 class App extends Component {
 
+  reloadHandler = () => {
+    this.forceUpdate();
+  }
+
   render() {
     return (
-      <ToShow />
+      <ToShow update={this.reloadHandler} />
     );
   }
 }

@@ -4,7 +4,7 @@ header {
   height: 60px;
   width: 80%;
   margin: auto;
-  justify-content: space-between;
+  justify-content: space-between; 
 }
 
 a {
@@ -32,7 +32,7 @@ textarea:focus, input:focus{
   position: fixed;
   width: 100%;
   top: 0;
-  
+  z-index: 10000;
 }
 
 .icon {

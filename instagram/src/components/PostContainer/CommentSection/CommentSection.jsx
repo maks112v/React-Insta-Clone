@@ -53,7 +53,7 @@ class CommentSection extends Component {
         
       </div>
       <form onSubmit={this.addNewComment} className="comment-add">
-        <input className="comment-input" value={this.state.commentText} onChange={this.handleChanges} type="text" placeholder="Add a comment..." />
+        <input className="comment-input" required="required" value={this.state.commentText} onChange={this.handleChanges} type="text" placeholder="Add a comment..." />
         {/* <button className="comment-submit">Comment</button> */}
       </form>
       </>

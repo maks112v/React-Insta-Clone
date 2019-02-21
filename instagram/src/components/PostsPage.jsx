@@ -25,6 +25,11 @@ class PostsPage extends Component{
     }
   }
 
+  logOut = () =>{
+    localStorage.clear();
+    this.props.reloadHandler();
+  }
+
   likePost = index => {
     const newPosts = [...this.state.posts];
     if(newPosts[index].liked){
@@ -63,7 +68,7 @@ class PostsPage extends Component{
   render() {
     return (
       <div className="padding-body">
-        <SearchBar searchHandler={this.handleChanges} searchValue={this.state.search} />
+        <SearchBar searchHandler={this.handleChanges} searchValue={this.state.search} logOutHandler={this.logOut} />
         <div className="content-body">
         {((this.state.displaySearch) ? this.state.displayPosts: this.state.posts).map((content, index) => (
           <Card key={index} index={index} postInfo={content} likePost={() => this.likePost(index)} helperFunction={this.helperFunction} />
