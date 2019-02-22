@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import './Login.css';
 import styled from 'styled-components'
+import './Login.css';
+
 
 const ContainerFluid = styled.div`
   height: 100vh;
@@ -14,11 +15,11 @@ const LoginSection = styled.div`
 `;
 
 const ImageSection = styled.div`
-width: 70%;
-background-size: cover;
-background-position: center;
-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-background-image: url('https://source.unsplash.com/collection/4331376/');
+  width: 70%;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background-image: url('https://source.unsplash.com/collection/4331376/');
 `;
 
 const LoginInput = styled.input`
