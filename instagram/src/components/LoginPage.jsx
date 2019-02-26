@@ -77,7 +77,6 @@ class LoginPage extends Component {
     this.props.reloadHandler();
   }
 
-
   render() {
 
     return(
