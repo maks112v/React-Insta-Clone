@@ -1,0 +1,31 @@
+.comment-submit {
+  position: relative;
+  width: 20%;
+}
+
+.post-liked{
+  color: red;
+}
+
+.hover-delete{
+  cursor: pointer;
+}
+
+.hover-delete:hover{
+  cursor: pointer;
+  color: red;
+}
+
+.fa-heart{
+  cursor: pointer;
+  transition: .2s;
+}
+
+.comment-add {
+  display:flex;
+  z-index: 1;
+}
+
+h3 {
+  padding-left: 20px;
+}
